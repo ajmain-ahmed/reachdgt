@@ -6,7 +6,7 @@ const redis = Redis.fromEnv()
 
 const ratelimit = new Ratelimit({
     redis: redis,
-    limiter: Ratelimit.slidingWindow(5, "86400 s"),
+    limiter: Ratelimit.slidingWindow(10, "86400 s"),
     timeout: 86400000,
     analytics: true
 })
