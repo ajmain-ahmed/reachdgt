@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
+import emailjs from '@emailjs/browser';
 
 const redis = Redis.fromEnv()
 
@@ -40,6 +41,7 @@ export async function POST(request: Request) {
             return (Response.json({ message: error }))
         }
         else {
+            emailjs.send(process.env.EMAILJS_SID!, process.env.EMAILJS_TID!)
             return (Response.json('Query received'))
         }
     }
