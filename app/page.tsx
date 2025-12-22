@@ -46,6 +46,7 @@ export default function Home() {
     setMessage('')
     setOpen(false)
     const result = await resp.json()
+    console.log(result)
     if (result === 'Query received') {
       setSbOpen(true)
       setSbMsg('Your enquiry has been sent!')
