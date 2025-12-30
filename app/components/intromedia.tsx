@@ -35,18 +35,18 @@ export default function IntroMedia() {
         <Box
             sx={{
                 width: {md:'80%', xs:'100%'},
-                // Soft outer glow (navy-tinted to match your theme)
+             
                 boxShadow: `
           0 8px 32px rgba(3, 22, 43, 0.25),
           0 0 0 1px rgba(99, 102, 241, 0.1)
         `,
                 borderRadius: '16px',
                 overflow: 'hidden',
-                backgroundColor: 'rgba(0, 0, 0, 0.6)', // subtle dark fill behind iframe
-                backdropFilter: 'blur(4px)', // optional: enhance glass feel
+                backgroundColor: 'rgba(0, 0, 0, 0.6)', 
+                backdropFilter: 'blur(4px)', 
                 WebkitBackdropFilter: 'blur(4px)',
 
-                // Ensure no internal padding interferes
+         
                 '& > div': {
                     margin: 0,
                 },
@@ -56,7 +56,7 @@ export default function IntroMedia() {
                 videoId="W91-jAQ2ijM"
                 opts={options}
                 onReady={onPlayerReady}
-                // Optional: improve responsiveness
+             
                 iframeClassName="youtube-iframe"
             />
         </Box>

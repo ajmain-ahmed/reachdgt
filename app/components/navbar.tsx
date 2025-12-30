@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Menu, MenuItem, TextField, Toolbar, Typography } from "@mui/material";
+import { Box, Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Menu, MenuItem, Snackbar, TextField, Toolbar, Typography } from "@mui/material";
 import WbTwilightIcon from '@mui/icons-material/WbTwilight';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -9,45 +9,85 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Drawer from '@mui/material/Drawer';
 import CloseIcon from '@mui/icons-material/Close';
+import validator from 'validator';
+import { Close } from "@mui/icons-material";
 
 export default function Navbar() {
     const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.up('sm')); // sm = 600px+
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
+    const [open, setOpen] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-    const [open, setOpen] = useState(false)
 
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [sbOpen, setSbOpen] = useState(false)
+    const [sbMsg, setSbMsg] = useState('')
 
     const navItems = [
         { label: 'Products', href: '#products' },
         { label: 'Campaigns', href: '#campaigns' },
         { label: 'FAQ', href: '#faq' },
-    ];
+    ]
 
-    const handleSubmit = () => {
-        // TODO: handle form submission (e.g., API call)
-        console.log({ name, email, message });
+    const action = (
+        <React.Fragment>
+            <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={() => setSbOpen(false)}
+            >
+                <Close fontSize="small" />
+            </IconButton>
+        </React.Fragment>
+    )
+
+    const handleSubmit = async (name: String, email: String, message: String) => {
+        setLoading(true)
+        const resp = await fetch('/api/SendQuery', {
+            method: 'POST',
+            body: JSON.stringify({
+                clientName: name,
+                clientEmail: email,
+                clientMsg: message
+            })
+        })
+        setLoading(false)
+        setName('')
+        setEmail('')
+        setMessage('')
+        setOpen(false)
+        const result = await resp.json()
+        console.log(result)
+        if (result === 'Query received') {
+            setSbOpen(true)
+            setSbMsg('Your enquiry has been sent!')
+        }
+        else {
+            setSbOpen(true)
+            setSbMsg('There was an error receiving your enquiry')
+        }
     }
 
     return (
         <Box
             sx={{
-                position: 'sticky', // Move sticky positioning here
-                top: 0,            // Add this to stick to top
+                position: 'sticky',
+                top: 0,
                 zIndex: 1100,
                 pt: { md: 6, xs: 4 },
                 px: 0,
-                pb: { md: 10, xs: 5 }, // slightly reduced from 10 for better rhythm
+                pb: { md: 10, xs: 5 },
             }}
         >
             <Container
                 sx={{
                     padding: 0,
-                    // ✅ Your exact navy glass styling preserved
-                    backgroundColor: 'rgba(1, 13, 26, 0.88)', // #010d1a @ 88%
+
+                    backgroundColor: 'rgba(1, 13, 26, 0.88)',
                     backdropFilter: 'blur(12px)',
                     WebkitBackdropFilter: 'blur(12px)',
                     borderRadius: '12px',
@@ -60,14 +100,13 @@ export default function Navbar() {
                     sx={{
                         position: 'sticky',
                         margin: 0,
-                        padding: { xs: 1.5, sm: 0 }, // slight inner padding on mobile for tap space
+                        padding: { xs: 1.5, sm: 0 },
                         display: 'flex',
                         justifyContent: 'space-between',
                     }}
                 >
-                    {/* Logo + Nav (Desktop) / Logo-only (Mobile) */}
+            
                     {matches ? (
-                        // 🔹 Desktop
                         <Box
                             sx={{
                                 display: 'flex',
@@ -141,7 +180,7 @@ export default function Navbar() {
                             </Box>
                         </Box>
                     ) : (
-                        // 🔹 Mobile
+                   
                         <Box
                             component={Link}
                             href='/'
@@ -172,7 +211,7 @@ export default function Navbar() {
                         </Box>
                     )}
 
-                    {/* Auth (Desktop) / Menu (Mobile) */}
+              
                     {matches ? (
                         <Button
                             onClick={() => setOpen(true)}
@@ -189,7 +228,7 @@ export default function Navbar() {
                             Enquire now
                         </Button>
                     ) : (
-                        // 🔹 Mobile — Menu button styled to match your glass navbar
+
                         <IconButton
                             onClick={() => setMobileOpen(true)}
                             sx={{
@@ -215,7 +254,7 @@ export default function Navbar() {
                     onClose={() => setMobileOpen(false)}
                     sx={{
                         '& .MuiDrawer-paper': {
-                            width: '100%', // or '100%' for full width
+                            width: '100%',
                             height: 'auto',
                             backgroundColor: 'rgba(10, 15, 30, 0.95)',
                             backdropFilter: 'blur(12px)',
@@ -263,7 +302,6 @@ export default function Navbar() {
                             </Link>
                         ))}
 
-                        {/* Optional: add Enquire Now inside mobile drawer too */}
                         <Button
                             onClick={() => {
                                 setMobileOpen(false);
@@ -295,7 +333,7 @@ export default function Navbar() {
                         borderRadius: '16px',
                         bgcolor: 'rgba(20, 22, 38, 0.85)',
                         border: '1px solid rgba(255, 255, 255, 0.08)',
-                        backdropFilter: 'blur(4px)', // subtle frosted glass (optional)
+                        backdropFilter: 'blur(4px)',
                     },
                 }}
             >
@@ -312,6 +350,7 @@ export default function Navbar() {
 
                 <DialogContent>
                     <TextField
+                        slotProps={{ htmlInput: { maxLength: 50 } }}
                         autoFocus
                         margin="dense"
                         label="Name"
@@ -340,9 +379,12 @@ export default function Navbar() {
                     />
 
                     <TextField
+                        slotProps={{ htmlInput: { maxLength: 254 } }}
                         margin="dense"
                         label="Email"
                         type="email"
+                        error={!validator.isEmail(email) && email != ''}
+                        helperText={(!validator.isEmail(email) && email != '') && 'Please enter a valid email.'}
                         fullWidth
                         variant="outlined"
                         value={email}
@@ -368,6 +410,7 @@ export default function Navbar() {
                     />
 
                     <TextField
+                        slotProps={{ htmlInput: { maxLength: 500 } }}
                         margin="dense"
                         label="Message (optional)"
                         multiline
@@ -400,6 +443,7 @@ export default function Navbar() {
                     <Button
                         onClick={() => setOpen(false)}
                         sx={{
+                            textTransform: 'none',
                             color: 'white',
                             borderColor: 'rgba(255, 255, 255, 0.3)',
                             '&:hover': {
@@ -413,15 +457,16 @@ export default function Navbar() {
                     </Button>
 
                     <Button
-                        onClick={handleSubmit}
+                        loading={loading}
+                        onClick={() => { ((validator.isEmail(email)) && (name != '')) ? handleSubmit(name, email, message) : console.log('email and/or name are invalid') }}
                         sx={{
+                            textTransform: 'none',
                             ml: 2,
                             bgcolor: '#6da1ff',
                             color: '#0b0b1e',
-                            fontWeight: 600,
                             '&:hover': {
                                 bgcolor: '#5a91e0',
-                            },
+                            }
                         }}
                         variant="contained"
                     >
@@ -429,6 +474,13 @@ export default function Navbar() {
                     </Button>
                 </DialogActions>
             </Dialog>
+            <Snackbar
+                open={sbOpen}
+                autoHideDuration={6000}
+                action={action}
+                onClose={() => setSbOpen(false)}
+                message={sbMsg}
+            />
         </Box>
     );
 }

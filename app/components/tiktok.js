@@ -5,7 +5,7 @@ export default function ReelTiktok() {
         className="tiktok-embed"
         cite="https://www.tiktok.com/@arabicwithm/video/7570386301594258710"
         data-video-id="7570386301594258710"
-        style={{ maxWidth: 325 }}   // keep the original limits
+        style={{ maxWidth: 325 }}
       >
         <section>
           <a
@@ -27,7 +27,6 @@ export default function ReelTiktok() {
         </section>
       </blockquote>
 
-      {/* override the iframe width after the script runs */}
       <style jsx global>{`
         .tiktok-embed iframe {
           width: 325px !important;

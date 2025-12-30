@@ -63,7 +63,7 @@ export default function PrivacyPolicy() {
                     <li>Delete your data</li>
                 </Typography>
                 <Typography gutterBottom>
-                    → Just email us at <strong>reach.dgt@pm.me</strong>
+                    Just email us at <strong>reach.dgt@pm.me</strong>
                 </Typography>
 
                 <Typography variant="subtitle1" fontWeight={600} gutterBottom>

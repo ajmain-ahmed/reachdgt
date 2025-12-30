@@ -7,7 +7,7 @@ export default function ReelInstagram() {
         data-instgrm-permalink="https://www.instagram.com/reel/DRaC8Q5iA86/?utm_source=ig_embed&utm_campaign=loading"
         data-instgrm-version="14"
       >
-        {/* Instagram’s skeleton markup (loader) – keep it minimal */}
+
         <div>
           <a
             href="https://www.instagram.com/reel/DRaC8Q5iA86/?utm_source=ig_embed&utm_campaign=loading"
@@ -19,7 +19,7 @@ export default function ReelInstagram() {
         </div>
       </blockquote>
 
-      {/* force the injected iframe to the exact width */}
+
       <style jsx global>{`
         .instagram-media iframe {
           width: 326px !important;

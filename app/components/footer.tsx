@@ -36,7 +36,7 @@ export default function Footer() {
         gap: { xs: 4, sm: 8 },
         py: { xs: 8, sm: 10 },
         textAlign: { sm: 'center', md: 'left' },
-        color: '#FFFFFF', // ✅ base text color
+        color: '#FFFFFF', 
       }}
     >
       <Box
@@ -49,7 +49,6 @@ export default function Footer() {
         }}
       >
 
-        {/* Column headings */}
         <Box sx={{ display: { xs: 'none', sm: 'flex' }, flexDirection: 'column', gap: 1 }}>
           <Typography variant="body2" sx={{ fontWeight: 'medium', color: '#FFFFFF' }}>
             Service
