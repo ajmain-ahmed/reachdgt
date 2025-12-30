@@ -1000,24 +1000,7 @@ export default function Home() {
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            Primarily TikTok, Instagram, and YouTube Shorts, where short-form, high-engagement storytelling thrives.
-          </AccordionDetails>
-        </Accordion>
-        <Accordion
-          sx={{
-            borderRadius: '16px',
-            bgcolor: 'rgba(20, 22, 38, 0.7)',
-            color: 'white'
-          }}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMore sx={{ color: 'white', fontSize: 24 }} />}>
-            <Typography component="span">
-              What tech do you use to build websites?
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            We build fast, SEO-friendly, scalable sites with Next.js (React), leveraging server-side rendering, image optimisation and global CDN delivery, ensuring  your site performs as  well as your content.
+            Primarily TikTok, Instagram, LinkedIn and YouTube Shorts.
           </AccordionDetails>
         </Accordion>
         <Accordion
