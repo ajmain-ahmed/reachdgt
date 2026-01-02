@@ -24,10 +24,10 @@ export default function PrivacyPolicy() {
                 </Typography>
                 <Typography component="ul" sx={{ pl: 3, mb: 2 }}>
                     <li>
-                        When you fill in our contact form: your <strong>name</strong>, <strong>email</strong>, and optional message.
+                        Contact details: your <strong>name</strong>, <strong>email</strong>, and message should you fill the contact form.
                     </li>
                     <li>
-                        Website usage via <strong>Google Analytics</strong> (anonymous, aggregated data — no personally identifiable info).
+                        Website usage via <strong>Google Analytics.</strong>
                     </li>
                 </Typography>
 
@@ -36,7 +36,7 @@ export default function PrivacyPolicy() {
                 </Typography>
                 <Typography component="ul" sx={{ pl: 3, mb: 2 }}>
                     <li>To respond to your enquiry.</li>
-                    <li>To improve our website (e.g., see which pages are popular).</li>
+                    <li>To improve our website.</li>
                 </Typography>
 
                 <Typography variant="subtitle1" fontWeight={600} gutterBottom>
@@ -44,7 +44,7 @@ export default function PrivacyPolicy() {
                 </Typography>
                 <Typography component="ul" sx={{ pl: 3, mb: 2 }}>
                     <li>
-                        Enquiry emails: <strong>30 days</strong> after project completion (or indefinitely if no project, unless you ask us to delete).
+                        Enquiry emails: indefinitely unless requested otherwise.
                     </li>
                     <li>
                         Analytics data: retained by Google per their policy (we don’t store it).
@@ -63,14 +63,14 @@ export default function PrivacyPolicy() {
                     <li>Delete your data</li>
                 </Typography>
                 <Typography gutterBottom>
-                    Just email us at <strong>reach.dgt@pm.me</strong>
+                    Just email us at <strong>reachdgt@gmail.com</strong>
                 </Typography>
 
                 <Typography variant="subtitle1" fontWeight={600} gutterBottom>
                     Questions?
                 </Typography>
                 <Typography>
-                    Contact: <strong>reach.dgt@pm.me</strong>
+                    Contact: <strong>reachdgt@gmail.com</strong>
                 </Typography>
             </Box>
             <Footer />

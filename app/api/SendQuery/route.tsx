@@ -41,7 +41,6 @@ export async function POST(request: Request) {
             return (Response.json({ message: error }))
         }
         else {
-            emailjs.send(process.env.EMAILJS_SID!, process.env.EMAILJS_TID!)
             return (Response.json('Query received'))
         }
     }

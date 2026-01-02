@@ -36,7 +36,7 @@ export default function Footer() {
         gap: { xs: 4, sm: 8 },
         py: { xs: 8, sm: 10 },
         textAlign: { sm: 'center', md: 'left' },
-        color: '#FFFFFF', 
+        color: '#FFFFFF',
       }}
     >
       <Box
@@ -45,7 +45,7 @@ export default function Footer() {
           flexDirection: { xs: 'column', sm: 'row' },
           width: '100%',
           justifyContent: 'left',
-          gap:3
+          gap: 3
         }}
       >
 
@@ -117,9 +117,17 @@ export default function Footer() {
             color="inherit"
             size="small"
             href="https://www.instagram.com/reach.dgt/"
-            sx={{ color: '#FFFFFF', '&:hover': { color: '#6366F1' } }}
+            sx={{ color: '#FFFFFF', '&:hover': { color: '#1976d2' } }}
           >
             <Instagram />
+          </IconButton>
+          <IconButton
+            color="inherit"
+            size="small"
+            href="https://www.linkedin.com/company/reachdgt/"
+            sx={{ color: '#FFFFFF', '&:hover': { color: '#1976d2' } }}
+          >
+            <LinkedInIcon />
           </IconButton>
         </Stack>
       </Box>

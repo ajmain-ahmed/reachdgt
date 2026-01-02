@@ -105,7 +105,7 @@ export default function Navbar() {
                         justifyContent: 'space-between',
                     }}
                 >
-            
+
                     {matches ? (
                         <Box
                             sx={{
@@ -114,26 +114,26 @@ export default function Navbar() {
                                 alignItems: 'center',
                             }}
                         >
-                            <Link href="/">
-                                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                                    <WbTwilightIcon
-                                        sx={{
-                                            color: 'white',
-                                            mr: 1,
-                                            fontSize: '20px',
-                                        }}
-                                    />
-                                    <Typography
-                                        textTransform='none'
-                                        color="#E0E7FF"
-                                        variant="subtitle2"
-                                        fontWeight={600}
-                                        sx={{ fontSize: '0.95rem' }}
-                                    >
-                                        Reach.DGT
-                                    </Typography>
-                                </Box>
-                            </Link>
+
+                            <Box component={Button} href="/" sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                                <WbTwilightIcon
+                                    sx={{
+                                        color: 'white',
+                                        mr: 1,
+                                        fontSize: '20px',
+                                    }}
+                                />
+                                <Typography
+                                    textTransform='none'
+                                    color="#E0E7FF"
+                                    variant="subtitle2"
+                                    fontWeight={600}
+                                    sx={{ fontSize: '0.95rem' }}
+                                >
+                                    Reach.DGT
+                                </Typography>
+                            </Box>
+
                             <Box
                                 sx={{
                                     ml: 3,
@@ -180,7 +180,7 @@ export default function Navbar() {
                             </Box>
                         </Box>
                     ) : (
-                   
+
                         <Box
                             component={Link}
                             href='/'
@@ -211,7 +211,7 @@ export default function Navbar() {
                         </Box>
                     )}
 
-              
+
                     {matches ? (
                         <Button
                             onClick={() => setOpen(true)}
