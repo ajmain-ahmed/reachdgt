@@ -323,7 +323,7 @@ export default function Home() {
 
             <Grid sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} size={matches ? 3 : 12}>
               <Box
-                width={!matches ? 500 : 900}
+                width={!matches ? 380 : 600}
                 height={!matches ? 140 : 130}
                 component="img"
                 src="/logos/evocaCropped.png"
@@ -1008,7 +1008,7 @@ export default function Home() {
             expandIcon={<ExpandMore sx={{ color: 'white', fontSize: 24 }} />}
           >
             <Typography component="span">
-              What makes Reach.DGT different from other marketing organisations?
+              What makes Reach.DGT different?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
