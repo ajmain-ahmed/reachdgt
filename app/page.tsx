@@ -319,10 +319,12 @@ export default function Home() {
       {/* clients */}
       <FadeIn delay={2500}>
         <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 0, pb: 3 }}>
-          <Grid sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} container spacing={2}>
+          <Grid sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} container spacing={4}>
 
             <Grid sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} size={matches ? 3 : 12}>
               <Box
+                width={!matches ? 500 : 900}
+                height={!matches ? 140 : 130}
                 component="img"
                 src="/logos/evocaCropped.png"
               />
@@ -330,6 +332,8 @@ export default function Home() {
 
             <Grid sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} size={matches ? 3 : 12}>
               <Box
+                width={!matches ? 280 : 300}
+                height={!matches ? 180 : 200}
                 component="img"
                 src="/logos/u1rw.png"
               />
